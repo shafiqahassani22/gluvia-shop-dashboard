@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+html[lang="fa"] body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+}
+
+html[lang="en"] body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+@keyframes gluvia-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gluvia-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+.gluvia-toast {
+  animation: gluvia-toast-in 180ms ease-out both;
+}
+
+.gluvia-toast-leaving {
+  animation: gluvia-toast-out 180ms ease-in both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gluvia-toast,
+  .gluvia-toast-leaving {
+    animation: none;
+  }
+}
+
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .invoice-print-area,
+  .invoice-print-area * {
+    visibility: visible !important;
+  }
+
+  .invoice-print-area {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .invoice-modal {
+    box-shadow: none !important;
+  }
+}
